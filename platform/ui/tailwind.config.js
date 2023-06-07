@@ -29,23 +29,23 @@ module.exports = {
       },
 
       primary: {
-        light: '#5acce6',
-        main: '#0944b3',
-        dark: '#090c29',
-        active: '#348cfd',
+        light: '#5ae6d9',
+        main: '#0fb59c',
+        dark: '#12161c',
+        active: '#38c8bf',
       },
 
       inputfield: {
-        main: '#3a3f99',
+        main: '#1d2529',
         disabled: '#2b166b',
         focus: '#5acce6',
         placeholder: '#39383f',
       },
 
       secondary: {
-        light: '#3a3f99',
-        main: '#2b166b',
-        dark: '#041c4a',
+        light: '#1d2529',
+        main: '#0f1724',
+        dark: '#121a26',
         active: '#1f1f27',
       },
 
