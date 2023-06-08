@@ -1,0 +1,87 @@
+import YunuStudyBrowser from '../YunuStudyBrowser';
+
+import { ArgsTable, Story, Canvas, Meta } from '@storybook/addon-docs';
+import { createComponentTemplate } from '../../../../storybook/functions/create-component-story';
+
+export const argTypes = {
+  component: YunuStudyBrowser,
+  title: 'Yunu/Components/StudyBrowser',
+};
+
+<Meta title="Yunu/Components/StudyBrowser" component={YunuStudyBrowser} />
+
+export const StudyBrowserTemplate = args => (
+  <div className="w-96">
+    <YunuStudyBrowser {...args} />
+  </div>
+);
+
+<Heading
+  title="YunuStudyBrowser"
+  componentRelativePath="StudyBrowser/YunuStudyBrowser.tsx"
+/>
+
+- [Overview](#overview)
+- [Props](#props)
+- [Contribute](#contribute)
+
+## Overview
+
+StudyBrowser is a component that renders the study items.
+
+## Props
+
+<ArgsTable of={YunuStudyBrowser} />
+
+## Usage
+
+With Studies
+
+<Canvas>
+  <Story
+    name="With Studies"
+    args={{
+      data: {
+        name: 'primary',
+        label: 'Primary',
+        studies: [
+          {
+            studyInstanceUid:
+              '1.3.6.1.4.1.25403.345050719074.3824.20170126085406.1',
+            date: '26-Oct-2015',
+            description: 'CT CHEST W CONTRAST',
+            modalities: 'CT',
+            numInstances: 1,
+            displaySets: [
+              {
+                displaySetInstanceUID: '0b66675a-a4e3-a718-21f4-035d2d178d62',
+                description: 'Topogram  0.6',
+                seriesNumber: '1',
+                modality: 'CT',
+                seriesDate: '26-Oct-2015',
+                numInstances: 1,
+                StudyInstanceUID:
+                  '1.3.6.1.4.1.25403.345050719074.3824.20170126085406.1',
+                componentType: 'thumbnailTracked',
+                dragData: {
+                  type: 'displayset',
+                  displaySetInstanceUID:
+                    '0b66675a-a4e3-a718-21f4-035d2d178d62',
+                },
+                isTracked: false,
+                viewportIdentificator: [],
+              },
+            ],
+          },
+        ],
+      },
+      expandedStudyInstanceUIDs: ['1.3.6.1.4'],
+    }}
+  >
+    {StudyBrowserTemplate.bind({})}
+  </Story>
+</Canvas>
+
+## Contribute
+
+<Footer componentRelativePath="StudyBrowser/__stories__/yunuStudyBrowser.stories.mdx" />

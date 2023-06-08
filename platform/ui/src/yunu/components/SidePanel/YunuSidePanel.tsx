@@ -68,7 +68,7 @@ const position = {
   },
 };
 
-const SidePanel = ({
+const YunuSidePanel = ({
   servicesManager,
   side,
   className,
@@ -226,7 +226,7 @@ const SidePanel = ({
                 )}
                 style={{ ...position[side] }}
               />
-              {/* Todo: ass secondary label here */}
+              {/* Todo: add secondary label here */}
               <span className="text-blue-300">
                 {tabs.length === 1 && (t(tabs[activeTabIndex].label) as string)}
               </span>
@@ -269,7 +269,7 @@ const SidePanel = ({
   );
 };
 
-SidePanel.propTypes = {
+YunuSidePanel.propTypes = {
   servicesManager: PropTypes.instanceOf(ServicesManager),
   side: PropTypes.oneOf(['left', 'right']).isRequired,
   className: PropTypes.string,
@@ -359,4 +359,4 @@ function _getMoreThanOneTabLayout(
   );
 }
 
-export default SidePanel;
+export default YunuSidePanel;
