@@ -5,7 +5,7 @@ import { useTranslation } from 'react-i18next';
 import { useLocation } from 'react-router';
 
 import {
-  SidePanel,
+  YunuSidePanel,
   ErrorBoundary,
   UserPreferences,
   AboutModal,
@@ -241,7 +241,7 @@ function ViewerLayout({
           {/* LEFT SIDEPANELS */}
           {leftPanelComponents.length ? (
             <ErrorBoundary context="Left Panel">
-              <SidePanel
+              <YunuSidePanel
                 side="left"
                 activeTabIndex={leftPanelDefaultClosed ? null : 0}
                 tabs={leftPanelComponents}
@@ -263,7 +263,7 @@ function ViewerLayout({
           </div>
           {rightPanelComponents.length ? (
             <ErrorBoundary context="Right Panel">
-              <SidePanel
+              <YunuSidePanel
                 side="right"
                 activeTabIndex={rightPanelDefaultClosed ? null : 0}
                 tabs={rightPanelComponents}

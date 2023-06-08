@@ -15,14 +15,11 @@ import { PanelService, ServicesManager, Types } from '@ohif/core';
 
 import Button from '../../../components/Button';
 import Icon from '../../../components/Icon';
-import IconButton from '../../../components/IconButton';
-import Tooltip from '../../../components/Tooltip';
 
 import 'swiper/css';
 import 'swiper/css/navigation';
 import './style.css';
 
-const borderSize = 20;
 const expandedWidth = 248;
 const collapsedWidth = 56;
 
@@ -31,7 +28,7 @@ const baseStyle = {
   width: `${expandedWidth}px`,
 };
 
-const collapsedHideWidth = expandedWidth - collapsedWidth + borderSize;
+const collapsedHideWidth = expandedWidth - collapsedWidth;
 const styleMap = {
   open: {
     left: { marginLeft: '0px' },
@@ -157,7 +154,7 @@ const SidePanel = ({
     return (
       <>
         <div
-          className={classnames('flex flex-col space-y-3 my-3 items-center')}
+          className={classnames('flex flex-col space-y-3 my-2 items-center')}
           style={{ width: collapsedWidth }}
           onClick={() => {
             updatePanelOpen(prev => !prev);
@@ -177,8 +174,8 @@ const SidePanel = ({
                   name={childComponent.iconName}
                   className="text-primary-active"
                   style={{
-                    width: '22px',
-                    height: '22px',
+                    width: '25px',
+                    height: '25px',
                   }}
                 />
               </span>
@@ -195,6 +192,7 @@ const SidePanel = ({
   return (
     <div
       className={classnames(
+        'bg-primary-dark',
         className,
         baseClasses,
         classesMap[openStatus][side]
@@ -205,10 +203,7 @@ const SidePanel = ({
         <React.Fragment>
           {/** Panel Header with Arrow and Close Actions */}
           <div
-            className={classnames(
-              'flex flex-static px-[10px] bg-primary-dark h-9 cursor-pointer',
-              tabs.length === 1 && 'mb-1'
-            )}
+            className="flex flex-static px-[10px] h-12 cursor-pointer border-b border-gray-300"
             onClick={() => {
               updatePanelOpen(prev => !prev);
               // slideToActivePanel();
@@ -232,7 +227,7 @@ const SidePanel = ({
                 style={{ ...position[side] }}
               />
               {/* Todo: ass secondary label here */}
-              <span className="text-primary-active">
+              <span className="text-blue-300">
                 {tabs.length === 1 && (t(tabs[activeTabIndex].label) as string)}
               </span>
             </Button>
@@ -250,7 +245,7 @@ const SidePanel = ({
           {/** carousel navigation with the arrows */}
           {/** only show carousel nav if tabs are more than 3 tabs */}
           {tabs.length > 3 && (
-            <div className="text-primary-active w-full flex justify-end gap-2 bg-primary-dark py-1 px-2">
+            <div className="text-primary-active w-full flex justify-end gap-2 py-1 px-2">
               <button ref={prevRef} className="swiper-button-prev-custom">
                 <Icon
                   name={'icon-prev'}

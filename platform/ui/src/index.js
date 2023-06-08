@@ -109,6 +109,9 @@ export {
   ViewportOverlay,
 } from './components';
 
+/** YUNU COMPONENTS */
+export { YunuSidePanel } from './yunu/components';
+
 /** These are mostly used in the docs */
 export { getIcon, ICONS, addIcon } from './components/Icon/getIcon';
 export { BackgroundColor } from './pages/Colors/BackgroundColor';
