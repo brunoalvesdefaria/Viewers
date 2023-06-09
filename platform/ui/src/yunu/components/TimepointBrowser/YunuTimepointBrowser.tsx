@@ -4,12 +4,15 @@ import { useTranslation } from 'react-i18next';
 
 import ButtonGroup from '../../../components/ButtonGroup';
 import Button from '../../../components/Button';
+import Icon from '../../../components/Icon';
 
-const StudyBrowser = ({
+const YunuTimepointBrowser = ({
   timepoints,
   activeTabName,
+  activeTimepointId,
   onClickTab,
   onClickTimepoint,
+  children,
 }) => {
   const { t } = useTranslation('Yunu');
 
@@ -22,15 +25,39 @@ const StudyBrowser = ({
     return (
       <React.Fragment key={activeTabName}>
         {items.map(timepoint => {
+          const isExpanded = timepoint.id === activeTimepointId;
           return (
-            <div
-              className="flex flex-row bg-blue-700 text-white px-3 py-1 gap-x-2 justify-between border-black border-t"
-              key={timepoint.id}
-            >
-              <div className="font-bold">{timepoint.label}</div>
-              <div>{timepoint.keys.join('|')}</div>
-              <div>{timepoint.date}</div>
-            </div>
+            <>
+              <div
+                key={timepoint.id}
+                className="flex flex-row items-center bg-blue-700 text-white px-2 h-8 justify-between border-black border-t cursor-pointer"
+                onClick={() => onClickTimepoint(timepoint.id)}
+              >
+                <Icon
+                  name="chevron-right"
+                  className={isExpanded ? 'rotate-90' : ''}
+                />
+                <div className="font-bold text-[14px] ml-1">
+                  {timepoint.label}
+                </div>
+                <div className="flex flex-row gap-x-1 text-[9px] text-blue-300 ml-2">
+                  {timepoint.keys.map(key => (
+                    <span
+                      key={key}
+                      className="uppercase border border-blue-300 rounded-[3px] px-1"
+                    >
+                      {key}
+                    </span>
+                  ))}
+                </div>
+                <div className="text-blue-400 text-[13px] grow text-right">
+                  {timepoint.date}
+                </div>
+              </div>
+              {isExpanded && (
+                <div className="bg-black text-white">{children}</div>
+              )}
+            </>
           );
         })}
       </React.Fragment>
@@ -41,7 +68,7 @@ const StudyBrowser = ({
     <React.Fragment>
       <div
         className="flex flex-row items-center justify-center h-16 p-4 border-b w-100 border-secondary-light bg-primary-dark"
-        data-cy={'studyBrowser-panel'}
+        data-cy={'yunuTimepointBrowser-panel'}
       >
         <ButtonGroup variant="outlined" color="secondary" splitBorder={false}>
           <Button
@@ -57,7 +84,7 @@ const StudyBrowser = ({
           <Button
             className={'text-white text-base p-2 min-w-18'}
             size="initial"
-            bgColor={activeTabName === 'all' ? 'bg-primary-main' : 'bg-black'}
+            bgColor={activeTabName !== 'key' ? 'bg-primary-main' : 'bg-black'}
             onClick={() => {
               onClickTab('all');
             }}
@@ -73,8 +100,9 @@ const StudyBrowser = ({
   );
 };
 
-StudyBrowser.propTypes = {
+YunuTimepointBrowser.propTypes = {
   activeTabName: PropTypes.string.isRequired,
+  activeTimepointId: PropTypes.string,
   onClickTab: PropTypes.func.isRequired,
   onClickTimepoint: PropTypes.func.isRequired,
   timepoints: PropTypes.arrayOf(
@@ -85,14 +113,15 @@ StudyBrowser.propTypes = {
       keys: PropTypes.arrayOf(PropTypes.string),
     })
   ),
+  children: PropTypes.node,
 };
 
 const noop = () => {};
 
-StudyBrowser.defaultProps = {
+YunuTimepointBrowser.defaultProps = {
   onClickTab: noop,
   onClickTimepoint: noop,
   timepoints: [],
 };
 
-export default StudyBrowser;
+export default YunuTimepointBrowser;

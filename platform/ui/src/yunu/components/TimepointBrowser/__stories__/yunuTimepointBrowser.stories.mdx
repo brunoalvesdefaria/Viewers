@@ -34,6 +34,7 @@ TimepointBrowser is a component that renders the study items.
     name="Overview"
     args={{
       activeTabName: 'key',
+      activeTimepointId: null,
     }}
   >
     {TimepointBrowserTemplate.bind({})}
@@ -53,6 +54,7 @@ With Timepoints
     name="With Timepoints"
     args={{
       activeTabName: 'all',
+      activeTimepointId: '123003',
       timepoints: [
         {
           id: '123003',
@@ -79,6 +81,7 @@ With Timepoints
           keys: ['baseline'],
         },
       ],
+      children: <div>Timepoint content</div>
     }}
   >
     {TimepointBrowserTemplate.bind({})}
