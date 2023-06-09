@@ -1,0 +1,90 @@
+import YunuTimepointBrowser from '../YunuTimepointBrowser';
+
+import { ArgsTable, Story, Canvas, Meta } from '@storybook/addon-docs';
+import { createComponentTemplate } from '../../../../storybook/functions/create-component-story';
+
+export const argTypes = {
+  component: YunuTimepointBrowser,
+  title: 'Yunu/Components/TimepointBrowser',
+};
+
+<Meta title="Yunu/Components/TimepointBrowser" component={YunuTimepointBrowser} />
+
+export const TimepointBrowserTemplate = args => (
+  <div className="w-96">
+    <YunuTimepointBrowser {...args} />
+  </div>
+);
+
+<Heading
+  title="YunuTimepointBrowser"
+  componentRelativePath="TimepointBrowser/YunuTimepointBrowser.tsx"
+/>
+
+- [Overview](#overview)
+- [Props](#props)
+- [Contribute](#contribute)
+
+## Overview
+
+TimepointBrowser is a component that renders the study items.
+
+<Canvas>
+  <Story
+    name="Overview"
+    args={{
+      activeTabName: 'key',
+    }}
+  >
+    {TimepointBrowserTemplate.bind({})}
+  </Story>
+</Canvas>
+
+## Props
+
+<ArgsTable of={YunuTimepointBrowser} />
+
+## Usage
+
+With Timepoints
+
+<Canvas>
+  <Story
+    name="With Timepoints"
+    args={{
+      activeTabName: 'all',
+      timepoints: [
+        {
+          id: '123003',
+          label: 'Follow-up 3',
+          date: '09-Sep-2010',
+          keys: ['current'],
+        },
+        {
+          id: '123002',
+          label: 'Follow-up 2',
+          date: '07-Aug-2010',
+          keys: ['prior', 'nadir'],
+        },
+        {
+          id: '123001',
+          label: 'Follow-up 1',
+          date: '08-Jul-2010',
+          keys: [],
+        },
+        {
+          id: '123000',
+          label: 'Baseline',
+          date: '07-Jun-2010',
+          keys: ['baseline'],
+        },
+      ],
+    }}
+  >
+    {TimepointBrowserTemplate.bind({})}
+  </Story>
+</Canvas>
+
+## Contribute
+
+<Footer componentRelativePath="TimepointBrowser/__stories__/yunuTimepointBrowser.stories.mdx" />

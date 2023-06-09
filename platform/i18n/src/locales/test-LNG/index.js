@@ -14,6 +14,7 @@ import SidePanel from './SidePanel.json';
 import PatientInfo from './PatientInfo.json';
 import Modes from './Modes.json';
 import Modals from './Modals.json';
+import Yunu from './Yunu.json';
 
 export default {
   'test-LNG': {
@@ -32,6 +33,7 @@ export default {
     PatientInfo,
     Modes,
     SidePanel,
-    Modals
+    Modals,
+    Yunu,
   },
 };
